@@ -8,6 +8,27 @@ gem 'rails', '3.2.16'
 gem 'sqlite3'
 
 
+gem 'friendly_id'
+gem 'thin'
+gem 'haml'
+gem 'haml-rails'
+gem 'quiet_assets'
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'rails-footnotes'
+gem 'foundation-rails'
+gem 'simple_form'
+gem 'devise'
+gem 'carrierwave'
+gem 'cancan'
+gem 'ckeditor'
+gem 'will_paginate'
+gem 'pry'
+gem 'pry-rails'
+gem 'annotate'
+gem 'carrierwave'
+gem 'choice'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
