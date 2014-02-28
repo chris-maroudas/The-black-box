@@ -5,7 +5,7 @@
   = @post.title
 %p
   %b Content:
-  = @post.content.html_safe
+  = raw @post.content
 
 = link_to 'Edit', edit_post_path(@post)
 \|
