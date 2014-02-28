@@ -21,16 +21,24 @@ class Post < ActiveRecord::Base
 
   validates :title, presence: true, uniqueness: true, length: { maximum: 120 }
   validates :content, presence: true, length: { maximum: 12000 }
+  validates :category_id, presence: true
 
   #scopes
   default_scope order: 'created_at DESC'
 
 
+  before_validation :strip_empty_space
+
   # Methods
+
+  def strip_empty_space
+    self.title = title.strip
+    self.content = content.strip
+  end
+
   def should_generate_new_friendly_id?
     new_record?
   end
-
 
   def taglist
     tags.collect do |tag|
