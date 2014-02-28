@@ -7,27 +7,36 @@ gem 'rails', '3.2.16'
 
 gem 'sqlite3'
 
-
-gem 'friendly_id'
+# Debugging
 gem 'thin'
-gem 'haml'
-gem 'haml-rails'
 gem 'quiet_assets'
 gem 'better_errors'
+gem 'meta_request'
 gem 'binding_of_caller'
 gem 'rails-footnotes'
-gem 'foundation-rails'
-gem 'simple_form'
-gem 'devise'
-gem 'carrierwave'
-gem 'cancan'
-gem 'ckeditor'
-gem 'will_paginate'
 gem 'pry'
 gem 'pry-rails'
 gem 'annotate'
+gem 'awesome_print'
+gem 'brakeman'
+
+# Utility
+gem 'friendly_id'
+gem 'haml'
+gem 'haml-rails'
+gem 'foundation-rails'
+gem 'simple_form'
+gem 'ckeditor'
+gem 'will_paginate'
 gem 'carrierwave'
+gem 'mini_magick'
 gem 'choice'
+
+# Authorization / Authentication
+gem 'devise'
+gem 'cancan'
+
+
 
 # Gems used only for assets and not required
 # in production environments by default.
