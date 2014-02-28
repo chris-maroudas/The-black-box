@@ -7,6 +7,13 @@
   %b Content:
   = raw @post.content
 
+%p
+  Posted under:
+  = @post.category.name
+  ,
+  = time_ago_in_words(@post.created_at)
+  ago.
+
 = link_to 'Edit', edit_post_path(@post)
 \|
 = link_to 'Back', posts_path

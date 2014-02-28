@@ -1,11 +1,12 @@
 TheNoirBox::Application.routes.draw do
+  resources :categories
+
+
   mount Ckeditor::Engine => '/ckeditor'
 
   resources :posts
 
   root to: "posts#index"
-
-  mount Ckeditor::Engine => '/ckeditor'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
