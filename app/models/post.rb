@@ -2,32 +2,38 @@
 #
 # Table name: posts
 #
-#  id         :integer          not null, primary key
-#  title      :string(255)
-#  content    :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  slug       :string(255)
+#  id          :integer          not null, primary key
+#  title       :string(255)
+#  content     :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  slug        :string(255)
+#  category_id :integer
 #
 
 class Post < ActiveRecord::Base
   attr_accessible :content, :title, :taglist, :category_id
 
+  # Behavior related
   extend FriendlyId
   friendly_id :title, use: :slugged
 
+  # Relationships
   has_and_belongs_to_many :tags
+  has_many :comments, as: :commentable
   belongs_to :category
 
+  # Validations
   validates :title, presence: true, uniqueness: true, length: { maximum: 120 }
   validates :content, presence: true, length: { maximum: 12000 }
   validates :category_id, presence: true
 
+  # Hooks
+  before_validation :strip_empty_space
+
   #scopes
   default_scope order: 'created_at DESC'
 
-
-  before_validation :strip_empty_space
 
   # Methods
 

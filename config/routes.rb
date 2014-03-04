@@ -1,10 +1,11 @@
 TheNoirBox::Application.routes.draw do
+  resources :static_pages
   resources :categories
-
 
   mount Ckeditor::Engine => '/ckeditor'
 
   resources :posts
+  resources :comments
 
   root to: "posts#index"
 

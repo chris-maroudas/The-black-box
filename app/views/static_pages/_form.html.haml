@@ -1,0 +1,16 @@
+= form_for @static_page do |f|
+  - if @static_page.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@static_page.errors.count, "error")} prohibited this static_page from being saved:"
+      %ul
+        - @static_page.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :content
+    = f.text_area :content
+  .actions
+    = f.submit 'Save'
