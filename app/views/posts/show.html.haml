@@ -19,3 +19,7 @@
 = link_to 'Back', posts_path
 
 = render partial: 'comments/form'
+
+%h3
+  Comments
+  = render partial: 'comment', collection: @comments unless @comments.blank?
