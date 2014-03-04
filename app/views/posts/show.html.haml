@@ -23,3 +23,5 @@
 %h3
   Comments
   = render partial: 'comment', collection: @comments unless @comments.blank?
+
+= link_to "placeholder", url_for(controller: "posts", action: "show", slug: "axaxouxa")

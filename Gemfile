@@ -27,15 +27,15 @@ gem 'haml-rails'
 gem 'foundation-rails'
 gem 'simple_form'
 gem 'ckeditor'
-gem 'will_paginate'
+gem 'kaminari'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'choice'
+gem 'ancestry'
 
 # Authorization / Authentication
 gem 'devise'
 gem 'cancan'
-
 
 
 # Gems used only for assets and not required

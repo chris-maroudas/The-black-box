@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class PostsController < WebsiteController
   # GET /posts
   # GET /posts.json
   def index
@@ -15,7 +15,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = @post.comments.new
-    @comments = @post.comments
+    @comments = @post.comments\
 
     respond_to do |format|
       format.html # show.html.erb
