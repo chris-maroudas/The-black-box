@@ -15,7 +15,8 @@ class PostsController < WebsiteController
   def show
     @post = Post.find(params[:id])
     @comment = @post.comments.new
-    @comments = @post.comments\
+
+    @comments = @post.comments
 
     respond_to do |format|
       format.html # show.html.erb
@@ -82,4 +83,5 @@ class PostsController < WebsiteController
       format.json { head :no_content }
     end
   end
+
 end
