@@ -15,7 +15,6 @@ class PostsController < WebsiteController
   def show
     @post = Post.find(params[:id])
     @comment = @post.comments.new
-
     @comments = @post.comments
 
     respond_to do |format|

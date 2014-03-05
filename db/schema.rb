@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140304032429) do
+ActiveRecord::Schema.define(:version => 20140305021146) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -42,7 +42,10 @@ ActiveRecord::Schema.define(:version => 20140304032429) do
     t.datetime "updated_at",       :null => false
     t.integer  "commentable_id"
     t.string   "commentable_type"
+    t.string   "ancestry"
   end
+
+  add_index "comments", ["ancestry"], :name => "index_comments_on_ancestry"
 
   create_table "friendly_id_slugs", :force => true do |t|
     t.string   "slug",                         :null => false

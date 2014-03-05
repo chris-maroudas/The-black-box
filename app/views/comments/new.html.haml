@@ -1,0 +1,8 @@
+= render partial: 'posts/comment', object: @comment.parent
+
+= simple_form_for @comment do |f|
+  = f.hidden_field :parent_id
+  = f.hidden_field :commentable_type
+  = f.hidden_field :commentable_id
+  = f.input :content
+  = f.submit

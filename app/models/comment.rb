@@ -12,7 +12,9 @@
 #
 
 class Comment < ActiveRecord::Base
-  attr_accessible :content, :user_id, :commentable_id, :commentable_type
+  attr_accessible :content, :user_id, :commentable_id, :commentable_type, :parent_id
 
   belongs_to :commentable, polymorphic: true
+
+  has_ancestry
 end
