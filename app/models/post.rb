@@ -2,13 +2,16 @@
 #
 # Table name: posts
 #
-#  id          :integer          not null, primary key
-#  title       :string(255)
-#  content     :text
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  slug        :string(255)
-#  category_id :integer
+#  id           :integer          not null, primary key
+#  title        :string(255)
+#  content      :text
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  slug         :string(255)
+#  category_id  :integer
+#  featured     :boolean          default(FALSE)
+#  published    :boolean          default(FALSE)
+#  published_at :datetime
 #
 
 class Post < ActiveRecord::Base
@@ -20,7 +23,7 @@ class Post < ActiveRecord::Base
 
   # Relationships
   has_and_belongs_to_many :tags
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
   belongs_to :category
 
   # Validations
@@ -30,16 +33,27 @@ class Post < ActiveRecord::Base
 
   # Hooks
   before_validation :strip_empty_space
+  before_save :check_if_published_changed
 
   #scopes
   default_scope order: 'created_at DESC'
-
+  scope :recent, -> { where('created_at >= ?', 6.days.ago) }
+  scope :published, -> { where(published: true) }
 
   # Methods
 
+
+  def self.commented
+    self.all.reject{ |post| post.comments.blank? } # Candidate for refactoring, awful practice
+  end
+
+  def check_if_published_changed
+    self.published_at = Time.now if "published".in? self.changed
+  end
+
   def strip_empty_space
-    self.title = title.strip
-    self.content = content.strip
+    self.title = title.strip if self.title
+    self.content = content.strip if self.content
   end
 
   def should_generate_new_friendly_id?

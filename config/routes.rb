@@ -1,4 +1,6 @@
 TheNoirBox::Application.routes.draw do
+  devise_for :users
+
   resources :static_pages
   resources :categories
 

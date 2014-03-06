@@ -9,6 +9,7 @@
 #  updated_at       :datetime         not null
 #  commentable_id   :integer
 #  commentable_type :string(255)
+#  ancestry         :string(255)
 #
 
 class Comment < ActiveRecord::Base

@@ -13,11 +13,24 @@
 
   <body>
 
-    <%= render 'layouts/header' %>
-
+    <%= render partial: 'layouts/header' %>
     <div class="row">
+      <div class="twelve columns">
+        <% if flash[:error] %>
+            <div class="alert-box error"><%= flash[:error] %><a class="close">x</a></div>
+        <% end %>
+
+        <%if flash[:notice] %>
+            <div class="alert-box success"><%= flash[:notice] %><a class="close">x</a></div>
+        <% end %>
+
+        <%if flash[:alert] %>
+            <div class="alert-box"><%= flash[:alert] %><a class="close">x</a></div>
+        <% end %>
+      </div>
         <div class="eight columns">
-            <%= yield %>
+          <%= render partial: 'layouts/user_nav' %>
+          <%= yield %>
         </div>
     </div>
 
