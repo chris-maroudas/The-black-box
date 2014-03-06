@@ -20,6 +20,10 @@ gem 'annotate'
 gem 'awesome_print'
 gem 'brakeman'
 
+group :development do
+  gem 'bullet'
+end
+
 # Utility
 gem 'friendly_id'
 gem 'haml'
