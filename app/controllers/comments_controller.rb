@@ -1,11 +1,12 @@
 class CommentsController < ApplicationController
+  load_and_authorize_resource
 
   def new
     @comment = Post.find(params[:post_id]).comments.new(parent_id: params[:parent_id])
   end
 
   def create
-    @comment = Comment.new(params[:comment])
+    @comment = current_user.comments.new(params[:comment])
 
     respond_to do |format|
       if @comment.save

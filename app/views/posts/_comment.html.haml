@@ -3,5 +3,5 @@
     = comment.content
   %h5
     Written by
-    = comment.commentable
+    = comment.user.user_name
   = link_to "-> Click to reply", new_comment_path(parent_id: comment, post_id: comment.commentable)

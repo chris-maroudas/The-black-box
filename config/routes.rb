@@ -1,11 +1,12 @@
 TheNoirBox::Application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
+  mount Ckeditor::Engine => '/ckeditor'
+
   devise_for :users
 
   resources :static_pages
   resources :categories
-
-  mount Ckeditor::Engine => '/ckeditor'
-
   resources :posts
   resources :comments
 

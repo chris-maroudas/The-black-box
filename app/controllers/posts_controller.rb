@@ -1,6 +1,7 @@
 class PostsController < WebsiteController
 
   before_filter :authenticate_user!, except: [:index, :show]
+  load_and_authorize_resource
 
   def index
     @posts = Post.all
@@ -43,7 +44,7 @@ class PostsController < WebsiteController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(params[:post])
+    @post = current_user.posts.new(params[:post])
 
     respond_to do |format|
       if @post.save

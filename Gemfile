@@ -36,6 +36,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'choice'
 gem 'ancestry'
+gem 'rails_admin'
 
 # Authorization / Authentication
 gem 'devise'

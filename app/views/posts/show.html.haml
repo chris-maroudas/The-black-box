@@ -11,6 +11,9 @@
   ,
   = time_ago_in_words(@post.created_at)
   ago.
+%p
+  Written by:
+  = @post.user.user_name.titleize
 = link_to 'Edit', edit_post_path(@post)
 \|
 = link_to 'Back', posts_path

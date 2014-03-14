@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
-  # GET /categories
+
+  load_and_authorize_resource
+
   # GET /categories.json
   def index
     @categories = Category.all

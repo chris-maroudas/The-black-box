@@ -25,6 +25,7 @@ class Post < ActiveRecord::Base
   has_and_belongs_to_many :tags
   has_many :comments, as: :commentable, dependent: :destroy
   belongs_to :category
+  belongs_to :user
 
   # Validations
   validates :title, presence: true, uniqueness: true, length: { maximum: 120 }
@@ -35,14 +36,12 @@ class Post < ActiveRecord::Base
   before_validation :strip_empty_space
   before_save :check_if_published_changed
 
-  #scopes
+  # Scopes
   default_scope order: 'created_at DESC'
   scope :recent, -> { where('created_at >= ?', 6.days.ago) }
   scope :published, -> { where(published: true) }
 
   # Methods
-
-
   def self.commented
     self.all.reject{ |post| post.comments.blank? } # Candidate for refactoring, awful practice
   end
