@@ -31,6 +31,7 @@ class Post < ActiveRecord::Base
   validates :title, presence: true, uniqueness: true, length: { maximum: 120 }
   validates :content, presence: true, length: { maximum: 12000 }
   validates :category_id, presence: true
+  validates_associated :tags
 
   # Hooks
   before_validation :strip_empty_space
