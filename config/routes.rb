@@ -1,4 +1,13 @@
 TheNoirBox::Application.routes.draw do
+  resources :node_types
+
+
+  resources :nodes
+
+
+  resources :menus
+
+
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   mount Ckeditor::Engine => '/ckeditor'

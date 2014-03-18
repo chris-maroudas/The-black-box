@@ -1,4 +1,4 @@
-class StaticPagesController < ApplicationController
+class StaticPagesController < WebsiteController
 
   load_and_authorize_resource
 

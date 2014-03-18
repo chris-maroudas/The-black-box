@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140314025649) do
+ActiveRecord::Schema.define(:version => 20140318060611) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -57,6 +57,31 @@ ActiveRecord::Schema.define(:version => 20140314025649) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], :name => "index_friendly_id_slugs_on_slug_and_sluggable_type", :unique => true
   add_index "friendly_id_slugs", ["sluggable_id"], :name => "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], :name => "index_friendly_id_slugs_on_sluggable_type"
+
+  create_table "menus", :force => true do |t|
+    t.string   "name"
+    t.integer  "position"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "node_types", :force => true do |t|
+    t.string   "name"
+    t.string   "controller"
+    t.string   "action"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "nodes", :force => true do |t|
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "menu_id"
+    t.integer  "node_type_id"
+    t.integer  "position"
+    t.string   "name"
+    t.string   "optional_field"
+  end
 
   create_table "posts", :force => true do |t|
     t.string   "title"
@@ -107,7 +132,10 @@ ActiveRecord::Schema.define(:version => 20140314025649) do
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "slug"
   end
+
+  add_index "static_pages", ["slug"], :name => "index_static_pages_on_slug"
 
   create_table "tags", :force => true do |t|
     t.string   "name"

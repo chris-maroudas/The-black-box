@@ -29,6 +29,20 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model Node do
+    configure :menu, :belongs_to_association
+    configure :node_type, :belongs_to_association
+    list do
+      field :node_type
+    end
+    edit do
+      field :name
+      field :node_type
+      field :menu
+      field :optional_field
+    end
+
+  end
 
   config.model StaticPage do
     edit do
@@ -81,7 +95,7 @@ RailsAdmin.config do |config|
   # config.default_items_per_page = 20
 
   # Exclude specific models (keep the others):
-  config.included_models = ['Category', 'Comment', 'Post', 'StaticPage', 'User']
+  config.included_models = ['Category', 'Comment', 'Post', 'StaticPage', 'User', 'Menu', 'Node', 'NodeType']
 
   # Include specific models (exclude the others):
   # config.included_models = ['Category', 'Ckeditor::Asset', 'Ckeditor::AttachmentFile', 'Ckeditor::Picture', 'Comment', 'Post', 'StaticPage', 'Tag', 'User']

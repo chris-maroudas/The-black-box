@@ -1,9 +1,3 @@
-
 %ul
-  %li
-    = link_to "Posts", posts_path
-  %li
-    = link_to
-  %li
-  %li
-  %li
+  - @menu.nodes.each do |node|
+    %li= menu_link_for node
