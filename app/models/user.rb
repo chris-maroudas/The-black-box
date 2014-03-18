@@ -47,6 +47,7 @@ class User < ActiveRecord::Base
     end
   end
 
+
   after_validation :add_default_role
 
   def add_default_role

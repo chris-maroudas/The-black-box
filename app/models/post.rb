@@ -15,7 +15,7 @@
 #
 
 class Post < ActiveRecord::Base
-  attr_accessible :content, :title, :taglist, :category_id
+  attr_accessible :content, :title, :taglist, :category_id, :published, :featured
 
   # Behavior related
   extend FriendlyId
@@ -43,7 +43,7 @@ class Post < ActiveRecord::Base
 
   # Methods
   def self.commented
-    self.all.reject{ |post| post.comments.blank? } # Candidate for refactoring, awful practice
+    self.all.reject { |post| post.comments.blank? } # Candidate for refactoring, awful practice
   end
 
   def check_if_published_changed

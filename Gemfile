@@ -37,6 +37,7 @@ gem 'mini_magick'
 gem 'choice'
 gem 'ancestry'
 gem 'rails_admin'
+gem 'mailcatcher'
 
 # Authorization / Authentication
 gem 'devise'
